@@ -1,68 +1,30 @@
-=========
-BinderHub
-=========
+import matplotlib.pyplot as plt
 
-.. image:: https://badges.gitter.im/jupyterhub/binder.svg
-   :alt: Join the chat at https://gitter.im/jupyterhub/binder
-   :target: https://gitter.im/jupyterhub/binder
+# 潮汐數據
+dates = ["06/18", "06/19", "06/20", "06/21", "06/22", "06/23", "06/24", "06/25", "06/26", "06/27", "06/28", "06/29", "06/30", "07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07", "07/08", "07/09", "07/10", "07/11", "07/12", "07/13", "07/14", "07/15", "07/16", "07/17", "07/18"]
+highest_tide_1 = ["05:25", "05:49", "06:18", "06:52", "07:29", "08:11", "08:57", "09:46", "10:40", "01:57", "02:23", "02:57", "03:34", "04:14", "04:55", "05:36", "06:18", "07:01", "07:43", "08:26", "09:08", "09:50", "10:33", "01:30", "01:56", "02:23", "02:50", "03:19", "03:52", "04:28", "05:07"]
+lowest_tide_1 = ["12:46", "13:27", "14:05", "14:44", "15:24", "16:07", "16:52", "17:39", "18:26", "05:25", "06:44", "08:07", "09:37", "11:03", "12:14", "13:12", "14:03", "14:50", "15:34", "16:15", "16:54", "17:32", "18:08", "04:54", "05:57", "07:09", "08:33", "10:21", "11:41", "12:33", "13:15"]
 
-.. image:: https://img.shields.io/badge/help_forum-discourse-blue.svg
-   :alt: Join our community Discourse page at https://discourse.jupyter.org
-   :target: https://discourse.jupyter.org/c/binder/binderhub
+# 將時間轉換為數值，這裡以一天為單位
+x = range(1, len(dates) + 1)
 
+# 繪製最高潮汐折線
+plt.plot(x, highest_tide_1, label='Highest Tide 1', marker='o')
+# 繪製最低潮汐折線
+plt.plot(x, lowest_tide_1, label='Lowest Tide 1', marker='o')
 
-BinderHub is a kubernetes-based cloud service that allows users to share
-reproducible interactive computing environments from code repositories. It is
-the primary technology behind `mybinder.org <https://mybinder.org>`_.
+# 添加標籤和標題
+plt.xlabel('Date')
+plt.ylabel('Time')
+plt.title('Tide Forecast for the Next 30 Days')
 
-This guide assists you, an administrator, through the process of setting up
-your BinderHub deployment.
+# 添加圖例
+plt.legend()
 
-.. tip:: For information about **using a BinderHub**, see `the binder user documentation <https://docs.mybinder.org>`_.
+# 設置x軸刻度為日期
+plt.xticks(x, dates, rotation=45)
 
-To get started creating your own BinderHub, start with :ref:`zero-to-binderhub`.
+# 顯示圖表
+plt.tight_layout()
+plt.show()
 
-Zero to BinderHub
-=================
-
-A guide to help you create your own BinderHub from scratch.
-
-.. toctree::
-   :maxdepth: 2
-
-   zero-to-binderhub/index
-
-Customization and deployment information
-========================================
-
-Information on how to customize your BinderHub as well as explore what others
-in the community have done.
-
-.. toctree::
-   :maxdepth: 2
-
-   customization/index
-
-BinderHub Developer and Architecture Documentation
-==================================================
-
-A more detailed overview of the BinderHub design, architecture, and functionality.
-
-.. toctree::
-   :maxdepth: 2
-   :caption:  Developer and architecture docs
-
-   developer/index
-
-Contributing to BinderHub 
-=========================
-
-The BinderHub community includes members of organizations deploying their own BinderHubs,
-as well as members of the broader Jupyter and Binder communities.
-
-This section contains a collection of resources for and about the BinderHub community.
-
-.. toctree::
-   :maxdepth: 2
-
-   contribute
